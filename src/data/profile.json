@@ -1,0 +1,27 @@
+{
+  "name": "Pin Shan Chuang",
+  "title": "ML Engineer",
+  "bio": "I build machine learning solutions that turn data into actionable insights. Passionate about deep learning, NLP, and creating impactful AI applications that solve real-world problems.",
+  "photo": "/images/profile.svg",
+  "socialLinks": [
+    {
+      "platform": "github",
+      "url": "https://github.com/5433shan",
+      "icon": "github",
+      "label": "GitHub Profile"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/in/shan-chuang/",
+      "icon": "linkedin",
+      "label": "LinkedIn Profile"
+    },
+    {
+      "platform": "email",
+      "url": "mailto:sl08095433@gmail.com",
+      "icon": "email",
+      "label": "Email Address"
+    }
+  ],
+  "resumeUrl": "/resume/Pin_Shan_Chuang_Resume.pdf"
+}

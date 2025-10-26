@@ -1,0 +1,367 @@
+# Content Schema Contracts
+# Defines YAML frontmatter schemas for markdown content files
+
+# Project frontmatter schema
+ProjectSchema:
+  type: object
+  required:
+    - title
+    - slug
+    - summary
+    - techStack
+    - featured
+    - order
+    - date
+    - image
+  properties:
+    title:
+      type: string
+      minLength: 5
+      maxLength: 100
+      description: Project name displayed in UI
+      example: "Customer Churn Prediction Model"
+
+    slug:
+      type: string
+      pattern: ^[a-z0-9-]+$
+      minLength: 3
+      maxLength: 100
+      description: URL-friendly identifier (lowercase, hyphens only)
+      example: "churn-prediction"
+
+    summary:
+      type: string
+      minLength: 50
+      maxLength: 300
+      description: 1-2 sentence project summary
+      example: "Built a machine learning pipeline to predict customer churn with 92% accuracy, reducing retention costs by 15%."
+
+    techStack:
+      type: array
+      items:
+        type: string
+        minLength: 1
+        maxLength: 30
+      minItems: 2
+      maxItems: 10
+      description: Array of technologies used
+      example: ["Python", "Scikit-learn", "XGBoost", "Docker", "FastAPI"]
+
+    repoUrl:
+      type: string
+      format: uri
+      pattern: ^https?://
+      description: GitHub repository URL (optional, but repoUrl or demoUrl required)
+      example: "https://github.com/janedoe/churn-prediction"
+
+    demoUrl:
+      type: string
+      format: uri
+      pattern: ^https?://
+      description: Live demo URL (optional, but repoUrl or demoUrl required)
+      example: "https://churn-demo.example.com"
+
+    featured:
+      type: boolean
+      description: Display in featured projects section (max 6 featured)
+      example: true
+
+    order:
+      type: integer
+      minimum: 1
+      maximum: 20
+      description: Display order for featured projects (1 = first)
+      example: 1
+
+    date:
+      type: string
+      pattern: ^\d{4}-\d{2}$
+      description: Completion date in YYYY-MM format
+      example: "2024-08"
+
+    image:
+      type: string
+      pattern: ^/images/projects/.+\.(webp|avif|jpg|png)$
+      description: Path to project thumbnail image
+      example: "/images/projects/churn-prediction.webp"
+
+---
+
+# BlogPost frontmatter schema
+BlogPostSchema:
+  type: object
+  required:
+    - title
+    - slug
+    - date
+    - excerpt
+    - published
+  properties:
+    title:
+      type: string
+      minLength: 10
+      maxLength: 200
+      description: Blog post title
+      example: "Introduction to Transformer Models"
+
+    slug:
+      type: string
+      pattern: ^[a-z0-9-]+$
+      minLength: 3
+      maxLength: 100
+      description: URL-friendly identifier
+      example: "intro-transformer-models"
+
+    date:
+      type: string
+      format: date
+      pattern: ^\d{4}-\d{2}-\d{2}$
+      description: Publication date in YYYY-MM-DD format
+      example: "2024-09-15"
+
+    excerpt:
+      type: string
+      minLength: 50
+      maxLength: 300
+      description: 1-2 sentence post summary for list view
+      example: "A beginner-friendly guide to understanding transformer architecture and self-attention mechanisms."
+
+    tags:
+      type: array
+      items:
+        type: string
+        minLength: 2
+        maxLength: 30
+      maxItems: 6
+      description: Optional categorization tags
+      example: ["NLP", "Deep Learning", "Transformers"]
+
+    readTime:
+      type: integer
+      minimum: 1
+      maximum: 60
+      description: Estimated read time in minutes (auto-calculated if omitted)
+      example: 8
+
+    published:
+      type: boolean
+      description: Draft (false) vs published (true) status
+      example: true
+
+    image:
+      type: string
+      pattern: ^/images/blog/.+\.(webp|avif|jpg|png)$
+      description: Optional hero image for blog post
+      example: "/images/blog/transformers.webp"
+
+---
+
+# Profile JSON schema
+ProfileSchema:
+  type: object
+  required:
+    - name
+    - title
+    - bio
+    - photo
+    - socialLinks
+    - resumeUrl
+  properties:
+    name:
+      type: string
+      minLength: 2
+      maxLength: 100
+      description: Full name of portfolio owner
+      example: "Jane Doe"
+
+    title:
+      type: string
+      minLength: 5
+      maxLength: 150
+      description: Professional title
+      example: "Data Scientist & ML Engineer"
+
+    bio:
+      type: string
+      minLength: 50
+      maxLength: 500
+      description: 2-3 sentence professional introduction
+      example: "I build machine learning solutions that turn data into actionable insights."
+
+    photo:
+      type: string
+      pattern: ^/images/.*\.(webp|avif|jpg|png)$
+      description: Path to profile image
+      example: "/images/profile.webp"
+
+    socialLinks:
+      type: array
+      items:
+        $ref: '#/SocialLinkSchema'
+      minItems: 2
+      maxItems: 6
+      description: Array of social media/contact links
+
+    resumeUrl:
+      type: string
+      pattern: ^/resume/.*\.pdf$
+      description: Path to downloadable PDF resume
+      example: "/resume/Jane_Doe_Resume.pdf"
+
+SocialLinkSchema:
+  type: object
+  required:
+    - platform
+    - url
+    - icon
+    - label
+  properties:
+    platform:
+      type: string
+      enum: [github, linkedin, email, twitter, medium, kaggle]
+      description: Platform identifier
+      example: "github"
+
+    url:
+      type: string
+      format: uri
+      pattern: ^(https?://|mailto:)
+      description: Full URL or mailto: link
+      example: "https://github.com/janedoe"
+
+    icon:
+      type: string
+      description: Icon identifier for rendering
+      example: "github"
+
+    label:
+      type: string
+      minLength: 5
+      maxLength: 50
+      description: Accessible label for screen readers
+      example: "GitHub Profile"
+
+---
+
+# Experience JSON schema
+ExperienceRoleSchema:
+  type: object
+  required:
+    - company
+    - role
+    - startDate
+    - endDate
+    - location
+    - achievements
+    - order
+  properties:
+    company:
+      type: string
+      minLength: 2
+      maxLength: 100
+      description: Company name
+      example: "Foxconn Technology Group"
+
+    companyUrl:
+      type: string
+      format: uri
+      pattern: ^https?://
+      description: Optional company website URL
+      example: "https://www.foxconn.com"
+
+    role:
+      type: string
+      minLength: 5
+      maxLength: 100
+      description: Job title
+      example: "Senior Data Scientist"
+
+    startDate:
+      type: string
+      pattern: ^\d{4}-\d{2}$
+      description: Start date in YYYY-MM format
+      example: "2022-03"
+
+    endDate:
+      type:
+        - string
+        - 'null'
+      pattern: ^\d{4}-\d{2}$
+      description: End date in YYYY-MM format, or null for current role
+      example: null
+
+    location:
+      type: string
+      minLength: 5
+      maxLength: 100
+      description: City, Country format
+      example: "Taipei, Taiwan"
+
+    achievements:
+      type: array
+      items:
+        $ref: '#/AchievementSchema'
+      minItems: 2
+      maxItems: 6
+      description: Array of accomplishments with metrics
+
+    order:
+      type: integer
+      minimum: 1
+      description: Display order (1 = most recent)
+      example: 1
+
+AchievementSchema:
+  type: object
+  required:
+    - description
+  properties:
+    description:
+      type: string
+      minLength: 50
+      maxLength: 300
+      description: Achievement with quantifiable metric
+      example: "Developed computer vision model for defect detection, improving accuracy by 23% and reducing defects by $2.1M annually"
+
+    category:
+      type: string
+      enum: [impact, technical, leadership]
+      description: Optional categorization
+      example: "impact"
+
+---
+
+# Contact form validation schema
+ContactMessageSchema:
+  type: object
+  required:
+    - name
+    - email
+    - message
+  properties:
+    name:
+      type: string
+      minLength: 2
+      maxLength: 100
+      description: Sender's name
+      example: "John Smith"
+
+    email:
+      type: string
+      format: email
+      pattern: ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$
+      description: Sender's email address
+      example: "john@example.com"
+
+    message:
+      type: string
+      minLength: 10
+      maxLength: 2000
+      description: Message content
+      example: "I'd like to discuss a data science opportunity..."
+
+    honeypot:
+      type: string
+      maxLength: 0
+      description: Anti-spam field (should remain empty)
+      example: ""

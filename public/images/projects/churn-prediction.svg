@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#ebe4d8"/>
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="48" fill="#8b6f47" text-anchor="middle" font-weight="bold">Project Image</text>
+  <text x="600" y="480" font-family="Arial, sans-serif" font-size="24" fill="#a8a29e" text-anchor="middle">Placeholder - Replace with actual image</text>
+</svg>

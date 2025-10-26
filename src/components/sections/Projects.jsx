@@ -4,13 +4,55 @@ import { useNavigate } from 'react-router-dom'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { Card } from '../ui/Card'
 import { Badge } from '../ui/Badge'
-import { parseMarkdown } from '../../utils/markdown'
 
-// Import markdown files directly
-import churnPredictionMd from '../../data/projects/customer-churn-prediction.md?raw'
-import defectDetectionMd from '../../data/projects/computer-vision-defect-detection.md?raw'
-import sentimentAnalysisMd from '../../data/projects/nlp-sentiment-analysis.md?raw'
-import predictiveMaintenanceMd from '../../data/projects/predictive-maintenance-lstm.md?raw'
+// Hardcoded project data (temporary solution until markdown loading is fixed)
+const PROJECTS_DATA = [
+  {
+    title: "Customer Churn Prediction Model",
+    slug: "customer-churn-prediction",
+    summary: "Built a machine learning pipeline to predict customer churn with 92% accuracy, reducing retention costs by 15% and saving $200K annually.",
+    techStack: ["Python", "Scikit-learn", "XGBoost", "Docker", "FastAPI", "SMOTE"],
+    repoUrl: "https://github.com/janedoe/churn-prediction",
+    demoUrl: "https://churn-demo.example.com",
+    featured: true,
+    order: 1,
+    date: "2024-08",
+    image: "/images/projects/churn-prediction.svg"
+  },
+  {
+    title: "Computer Vision Defect Detection",
+    slug: "computer-vision-defect-detection",
+    summary: "Developed a computer vision model for manufacturing defect detection, improving quality control accuracy by 23% and reducing defects by $2.1M annually.",
+    techStack: ["Python", "TensorFlow", "Keras", "OpenCV", "TensorRT", "ONNX"],
+    repoUrl: "https://github.com/janedoe/defect-detection",
+    featured: true,
+    order: 3,
+    date: "2024-03",
+    image: "/images/projects/defect-detection.svg"
+  },
+  {
+    title: "NLP Sentiment Analysis Pipeline",
+    slug: "nlp-sentiment-analysis",
+    summary: "Created an NLP pipeline for real-time sentiment analysis of customer reviews, processing 100K+ reviews daily with 89% accuracy.",
+    techStack: ["Python", "Transformers", "BERT", "spaCy", "FastAPI", "Redis"],
+    repoUrl: "https://github.com/janedoe/sentiment-analysis",
+    featured: true,
+    order: 2,
+    date: "2024-05",
+    image: "/images/projects/sentiment-analysis.svg"
+  },
+  {
+    title: "Predictive Maintenance with LSTM",
+    slug: "predictive-maintenance-lstm",
+    summary: "Developed a time-series forecasting model using LSTM networks to predict equipment failures, reducing downtime by 40%.",
+    techStack: ["Python", "PyTorch", "LSTM", "Pandas", "NumPy", "Plotly"],
+    repoUrl: "https://github.com/janedoe/predictive-maintenance",
+    featured: true,
+    order: 4,
+    date: "2023-11",
+    image: "/images/projects/predictive-maintenance.svg"
+  }
+]
 
 /**
  * Projects section component with grid layout and project cards
@@ -28,21 +70,8 @@ export function Projects() {
 
   const loadProjects = async () => {
     try {
-      // Parse markdown files
-      const projectContents = [
-        churnPredictionMd,
-        defectDetectionMd,
-        sentimentAnalysisMd,
-        predictiveMaintenanceMd,
-      ]
-
-      const allProjects = projectContents.map((content) => {
-        const { frontmatter } = parseMarkdown(content)
-        return frontmatter
-      })
-
-      // Filter featured projects and sort by order
-      const featuredProjects = allProjects
+      // Use hardcoded data for now
+      const featuredProjects = PROJECTS_DATA
         .filter((p) => p.featured)
         .sort((a, b) => a.order - b.order)
         .slice(0, 6) // Max 6 featured projects
@@ -124,6 +153,12 @@ export function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
+          {projects.length === 0 && (
+            <div className="col-span-full text-center text-neutral-600">
+              <p className="text-lg">No projects found. Check browser console for errors.</p>
+              <p className="text-sm mt-2">Projects array length: {projects.length}</p>
+            </div>
+          )}
           {projects.map((project) => (
             <motion.div key={project.slug} variants={cardVariants}>
               <Card

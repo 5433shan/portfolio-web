@@ -2,16 +2,54 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
-import MarkdownRenderer from '../components/markdown/MarkdownRenderer'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
-import { parseMarkdown, formatDate } from '../utils/markdown'
+import { formatDate } from '../utils/markdown'
 
-// Import markdown files directly
-import churnPredictionMd from '../data/projects/customer-churn-prediction.md?raw'
-import defectDetectionMd from '../data/projects/computer-vision-defect-detection.md?raw'
-import sentimentAnalysisMd from '../data/projects/nlp-sentiment-analysis.md?raw'
-import predictiveMaintenanceMd from '../data/projects/predictive-maintenance-lstm.md?raw'
+// Hardcoded project data with content
+const PROJECTS_DATA = {
+  'customer-churn-prediction': {
+    title: "Customer Churn Prediction Model",
+    slug: "customer-churn-prediction",
+    summary: "Built a machine learning pipeline to predict customer churn with 92% accuracy, reducing retention costs by 15% and saving $200K annually.",
+    techStack: ["Python", "Scikit-learn", "XGBoost", "Docker", "FastAPI", "SMOTE"],
+    repoUrl: "https://github.com/janedoe/churn-prediction",
+    demoUrl: "https://churn-demo.example.com",
+    date: "2024-08",
+    image: "/images/projects/churn-prediction.svg",
+    content: "Project details coming soon. This project demonstrates advanced machine learning techniques for customer churn prediction."
+  },
+  'computer-vision-defect-detection': {
+    title: "Computer Vision Defect Detection",
+    slug: "computer-vision-defect-detection",
+    summary: "Developed a computer vision model for manufacturing defect detection, improving quality control accuracy by 23% and reducing defects by $2.1M annually.",
+    techStack: ["Python", "TensorFlow", "Keras", "OpenCV", "TensorRT", "ONNX"],
+    repoUrl: "https://github.com/janedoe/defect-detection",
+    date: "2024-03",
+    image: "/images/projects/defect-detection.svg",
+    content: "Project details coming soon. This project showcases real-time computer vision for manufacturing quality control."
+  },
+  'nlp-sentiment-analysis': {
+    title: "NLP Sentiment Analysis Pipeline",
+    slug: "nlp-sentiment-analysis",
+    summary: "Created an NLP pipeline for real-time sentiment analysis of customer reviews, processing 100K+ reviews daily with 89% accuracy.",
+    techStack: ["Python", "Transformers", "BERT", "spaCy", "FastAPI", "Redis"],
+    repoUrl: "https://github.com/janedoe/sentiment-analysis",
+    date: "2024-05",
+    image: "/images/projects/sentiment-analysis.svg",
+    content: "Project details coming soon. This project implements state-of-the-art NLP techniques for sentiment analysis."
+  },
+  'predictive-maintenance-lstm': {
+    title: "Predictive Maintenance with LSTM",
+    slug: "predictive-maintenance-lstm",
+    summary: "Developed a time-series forecasting model using LSTM networks to predict equipment failures, reducing downtime by 40%.",
+    techStack: ["Python", "PyTorch", "LSTM", "Pandas", "NumPy", "Plotly"],
+    repoUrl: "https://github.com/janedoe/predictive-maintenance",
+    date: "2023-11",
+    image: "/images/projects/predictive-maintenance.svg",
+    content: "Project details coming soon. This project uses LSTM networks for predictive maintenance in industrial settings."
+  }
+}
 
 /**
  * ProjectDetail page for displaying individual project content
@@ -32,23 +70,14 @@ function ProjectDetail() {
       setLoading(true)
       setError(null)
 
-      // Map of project slugs to markdown content
-      const projectMap = {
-        'customer-churn-prediction': churnPredictionMd,
-        'computer-vision-defect-detection': defectDetectionMd,
-        'nlp-sentiment-analysis': sentimentAnalysisMd,
-        'predictive-maintenance-lstm': predictiveMaintenanceMd,
-      }
+      const projectData = PROJECTS_DATA[slug]
 
-      const projectContent = projectMap[slug]
-
-      if (!projectContent) {
+      if (!projectData) {
         setError('Project not found')
         return
       }
 
-      const { frontmatter, content } = parseMarkdown(projectContent)
-      setProject({ ...frontmatter, content })
+      setProject(projectData)
     } catch (err) {
       console.error('Error loading project:', err)
       setError('Failed to load project')
@@ -167,7 +196,7 @@ function ProjectDetail() {
 
           {/* Project Content */}
           <div className="bg-white rounded-lg shadow-md p-8 md:p-12">
-            <MarkdownRenderer content={project.content} />
+            <p className="text-lg text-neutral-700 leading-relaxed">{project.content}</p>
           </div>
 
           {/* Back to Projects Link */}

@@ -33,6 +33,7 @@ export default defineConfig({
     })
   ],
   base: '/portfolio-web/',
+  assetsInclude: ['**/*.md'],
   build: {
     outDir: 'dist',
     sourcemap: false,

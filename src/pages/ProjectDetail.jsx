@@ -8,6 +8,17 @@ import { formatDate } from '../utils/markdown'
 
 // Hardcoded project data with content
 const PROJECTS_DATA = {
+  'portfolio-website': {
+    title: "AI-Powered Portfolio Website",
+    slug: "portfolio-website",
+    summary: "Built a professional portfolio website using SpecKit and Claude Code - no manual coding required. Automated end-to-end workflow from specs to deployed GitHub Pages site.",
+    techStack: ["SpecKit", "Claude Code", "React", "Vite", "Tailwind CSS", "GitHub Actions"],
+    repoUrl: "https://github.com/5433shan/portfolio-web",
+    demoUrl: "https://5433shan.github.io/portfolio-web/",
+    date: "2025-10",
+    image: "/images/projects/portfolio-website.svg",
+    content: "Created a complete portfolio website without writing code manually. Used SpecKit workflow with Claude Code to generate specifications, implement features, and deploy to GitHub Pages automatically. The entire process - from specification to deployment - was handled through AI assistance, demonstrating the power of modern AI development tools."
+  },
   'customer-churn-prediction': {
     title: "Customer Churn Prediction Model",
     slug: "customer-churn-prediction",

@@ -8,6 +8,18 @@ import { Badge } from '../ui/Badge'
 // Hardcoded project data (temporary solution until markdown loading is fixed)
 const PROJECTS_DATA = [
   {
+    title: "AI-Powered Portfolio Website",
+    slug: "portfolio-website",
+    summary: "Built a professional portfolio website using SpecKit and Claude Code - no manual coding required. Automated end-to-end workflow from specs to deployed GitHub Pages site.",
+    techStack: ["SpecKit", "Claude Code", "React", "Vite", "Tailwind CSS", "GitHub Actions"],
+    repoUrl: "https://github.com/5433shan/portfolio-web",
+    demoUrl: "https://5433shan.github.io/portfolio-web/",
+    featured: true,
+    order: 0,
+    date: "2025-10",
+    image: "/images/projects/portfolio-website.svg"
+  },
+  {
     title: "Customer Churn Prediction Model",
     slug: "customer-churn-prediction",
     summary: "Built a machine learning pipeline to predict customer churn with 92% accuracy, reducing retention costs by 15% and saving $200K annually.",

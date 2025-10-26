@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#FFF8F3"/>
+  <rect x="50" y="50" width="700" height="500" fill="#FFFFFF" stroke="#8B4513" stroke-width="3" rx="10"/>
+  <rect x="50" y="50" width="700" height="60" fill="#D2691E" rx="10"/>
+  <circle cx="90" cy="80" r="8" fill="#CD853F"/>
+  <circle cx="120" cy="80" r="8" fill="#CD853F"/>
+  <circle cx="150" cy="80" r="8" fill="#CD853F"/>
+  <text x="400" y="90" font-family="Arial" font-size="20" fill="#FFF8F3" text-anchor="middle" font-weight="bold">AI-Powered Portfolio</text>
+  <rect x="100" y="150" width="600" height="80" fill="#FFF8F3" rx="5"/>
+  <text x="400" y="185" font-family="Arial" font-size="18" fill="#8B4513" text-anchor="middle" font-weight="bold">SpecKit + Claude Code</text>
+  <text x="400" y="210" font-family="Arial" font-size="14" fill="#A0522D" text-anchor="middle">Zero Manual Coding</text>
+  <rect x="100" y="260" width="180" height="120" fill="#DEB887" rx="5"/>
+  <rect x="310" y="260" width="180" height="120" fill="#DEB887" rx="5"/>
+  <rect x="520" y="260" width="180" height="120" fill="#DEB887" rx="5"/>
+  <text x="190" y="300" font-family="Arial" font-size="14" fill="#8B4513" text-anchor="middle" font-weight="bold">Specify</text>
+  <text x="190" y="325" font-family="Arial" font-size="11" fill="#8B4513" text-anchor="middle">Define</text>
+  <text x="190" y="340" font-family="Arial" font-size="11" fill="#8B4513" text-anchor="middle">Requirements</text>
+  <text x="400" y="300" font-family="Arial" font-size="14" fill="#8B4513" text-anchor="middle" font-weight="bold">Implement</text>
+  <text x="400" y="325" font-family="Arial" font-size="11" fill="#8B4513" text-anchor="middle">AI Generates</text>
+  <text x="400" y="340" font-family="Arial" font-size="11" fill="#8B4513" text-anchor="middle">Code</text>
+  <text x="610" y="300" font-family="Arial" font-size="14" fill="#8B4513" text-anchor="middle" font-weight="bold">Deploy</text>
+  <text x="610" y="325" font-family="Arial" font-size="11" fill="#8B4513" text-anchor="middle">GitHub</text>
+  <text x="610" y="340" font-family="Arial" font-size="11" fill="#8B4513" text-anchor="middle">Pages</text>
+  <path d="M 280 320 L 300 320" stroke="#8B4513" stroke-width="2" fill="none"/>
+  <path d="M 295 315 L 300 320 L 295 325" stroke="#8B4513" stroke-width="2" fill="none"/>
+  <path d="M 490 320 L 510 320" stroke="#8B4513" stroke-width="2" fill="none"/>
+  <path d="M 505 315 L 510 320 L 505 325" stroke="#8B4513" stroke-width="2" fill="none"/>
+  <rect x="100" y="410" width="600" height="100" fill="#F5DEB3" rx="5"/>
+  <text x="400" y="450" font-family="Arial" font-size="16" fill="#8B4513" text-anchor="middle" font-weight="bold">Production-Ready in Hours</text>
+  <text x="400" y="480" font-family="Arial" font-size="12" fill="#A0522D" text-anchor="middle">Full-Stack Development Without Writing Code</text>
+</svg>

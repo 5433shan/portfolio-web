@@ -22,15 +22,13 @@ export function Projects() {
 
   const loadProjects = async () => {
     try {
-      // Import all project markdown files
-      const projectFiles = import.meta.glob('../../data/projects/*.md', { query: '?raw', import: 'default' })
-      const projectPromises = Object.entries(projectFiles).map(async ([path, loader]) => {
-        const content = await loader()
+      // Import all project markdown files (eager import for better compatibility)
+      const projectFiles = import.meta.glob('../../data/projects/*.md', { eager: true, query: '?raw', import: 'default' })
+
+      const allProjects = Object.entries(projectFiles).map(([path, content]) => {
         const { frontmatter } = parseMarkdown(content)
         return frontmatter
       })
-
-      const allProjects = await Promise.all(projectPromises)
 
       // Filter featured projects and sort by order
       const featuredProjects = allProjects
@@ -124,7 +122,7 @@ export function Projects() {
               >
                 {project.image && (
                   <Card.Image
-                    src={project.image}
+                    src={import.meta.env.BASE_URL + project.image.replace(/^\//, '')}
                     alt={project.title}
                     className="h-48"
                   />

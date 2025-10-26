@@ -86,7 +86,7 @@ export function Hero() {
         {/* Profile Photo */}
         <motion.div variants={itemVariants} className="mb-8">
           <img
-            src={profileData.photo}
+            src={import.meta.env.BASE_URL + profileData.photo.replace(/^\//, '')}
             alt={profileData.name}
             className="w-48 h-48 rounded-full mx-auto object-cover shadow-xl ring-4 ring-primary-200"
             loading="eager"

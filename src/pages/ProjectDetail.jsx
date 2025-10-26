@@ -26,15 +26,15 @@ function ProjectDetail() {
       setLoading(true)
       setError(null)
 
-      // Import all project markdown files
-      const projectFiles = import.meta.glob('../data/projects/*.md', { query: '?raw', import: 'default' })
+      // Import all project markdown files (eager import)
+      const projectFiles = import.meta.glob('../data/projects/*.md', { eager: true, query: '?raw', import: 'default' })
 
       // Find the matching project file
       let projectContent = null
-      for (const [path, loader] of Object.entries(projectFiles)) {
+      for (const [path, content] of Object.entries(projectFiles)) {
         const filename = path.split('/').pop().replace('.md', '')
         if (filename === slug) {
-          projectContent = await loader()
+          projectContent = content
           break
         }
       }
@@ -154,7 +154,7 @@ function ProjectDetail() {
           {project.image && (
             <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
               <img
-                src={project.image}
+                src={import.meta.env.BASE_URL + project.image.replace(/^\//, '')}
                 alt={project.title}
                 className="w-full h-auto"
                 loading="eager"

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
 
 /**
@@ -9,11 +9,25 @@ import { useScrollSpy } from '../../hooks/useScrollSpy'
 export function Navigation({ scrolled }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
   const isHomePage = location.pathname === '/' || location.pathname === ''
 
   // Section IDs for scroll spy (only on home page)
   const sectionIds = ['hero', 'projects', 'experience', 'blog', 'contact']
   const activeSection = useScrollSpy(isHomePage ? sectionIds : [], 100)
+
+  const handleNavClick = (sectionId) => {
+    // If not on home page, navigate home first then scroll
+    if (!isHomePage) {
+      navigate('/')
+      // Wait for navigation and DOM update before scrolling
+      setTimeout(() => {
+        scrollToSection(sectionId)
+      }, 100)
+    } else {
+      scrollToSection(sectionId)
+    }
+  }
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -55,7 +69,7 @@ export function Navigation({ scrolled }) {
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => scrollToSection(link.id)}
+              onClick={() => handleNavClick(link.id)}
               className={`text-base font-medium transition-colors duration-200 hover:text-accent ${
                 activeSection === link.id
                   ? 'text-accent border-b-2 border-accent'
@@ -100,7 +114,7 @@ export function Navigation({ scrolled }) {
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => scrollToSection(link.id)}
+              onClick={() => handleNavClick(link.id)}
               className={`block w-full text-left px-4 py-2 text-base font-medium transition-colors duration-200 hover:bg-neutral-50 hover:text-accent ${
                 activeSection === link.id ? 'text-accent bg-neutral-50' : 'text-neutral-700'
               }`}

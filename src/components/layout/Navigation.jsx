@@ -34,7 +34,6 @@ export function Navigation({ scrolled }) {
     { id: 'hero', label: 'Home' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
-    { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ]
 

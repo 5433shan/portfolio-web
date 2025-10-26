@@ -7,6 +7,12 @@ import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { parseMarkdown, formatDate } from '../utils/markdown'
 
+// Import markdown files directly
+import churnPredictionMd from '../data/projects/customer-churn-prediction.md?raw'
+import defectDetectionMd from '../data/projects/computer-vision-defect-detection.md?raw'
+import sentimentAnalysisMd from '../data/projects/nlp-sentiment-analysis.md?raw'
+import predictiveMaintenanceMd from '../data/projects/predictive-maintenance-lstm.md?raw'
+
 /**
  * ProjectDetail page for displaying individual project content
  */
@@ -26,18 +32,15 @@ function ProjectDetail() {
       setLoading(true)
       setError(null)
 
-      // Import all project markdown files (eager import)
-      const projectFiles = import.meta.glob('../data/projects/*.md', { eager: true, query: '?raw', import: 'default' })
-
-      // Find the matching project file
-      let projectContent = null
-      for (const [path, content] of Object.entries(projectFiles)) {
-        const filename = path.split('/').pop().replace('.md', '')
-        if (filename === slug) {
-          projectContent = content
-          break
-        }
+      // Map of project slugs to markdown content
+      const projectMap = {
+        'customer-churn-prediction': churnPredictionMd,
+        'computer-vision-defect-detection': defectDetectionMd,
+        'nlp-sentiment-analysis': sentimentAnalysisMd,
+        'predictive-maintenance-lstm': predictiveMaintenanceMd,
       }
+
+      const projectContent = projectMap[slug]
 
       if (!projectContent) {
         setError('Project not found')

@@ -1,0 +1,52 @@
+[
+  {
+    "company": "Foxconn Technology Group",
+    "companyUrl": "https://www.foxconn.com",
+    "role": "Senior ML Engineer",
+    "startDate": "2022-03",
+    "endDate": null,
+    "location": "Taiwan",
+    "achievements": [
+      {
+        "description": "Developed computer vision model for defect detection, improving quality control accuracy by 23% and reducing manufacturing defects by $2.1M annually",
+        "category": "impact"
+      },
+      {
+        "description": "Built predictive maintenance system using LSTM networks, reducing unplanned downtime by 18% across 15 production lines",
+        "category": "technical"
+      },
+      {
+        "description": "Led a team of 4 data scientists to deploy real-time anomaly detection for IoT sensors, processing 50M+ events daily",
+        "category": "leadership"
+      },
+      {
+        "description": "Optimized ML inference pipeline with TensorRT and ONNX Runtime, achieving 6x speedup (200ms → 33ms latency)",
+        "category": "technical"
+      }
+    ],
+    "order": 1
+  },
+  {
+    "company": "Wistron Corporation",
+    "companyUrl": "https://www.wistron.com",
+    "role": "ML Engineer",
+    "startDate": "2020-06",
+    "endDate": "2022-02",
+    "location": "Taiwan",
+    "achievements": [
+      {
+        "description": "Designed recommendation engine for supply chain optimization, reducing inventory costs by 12% ($850K savings)",
+        "category": "impact"
+      },
+      {
+        "description": "Implemented NLP pipeline for customer feedback analysis, processing 100K+ reviews with 91% sentiment accuracy",
+        "category": "technical"
+      },
+      {
+        "description": "Created automated reporting dashboard with Tableau, saving 15 hours/week of manual analysis",
+        "category": "impact"
+      }
+    ],
+    "order": 2
+  }
+]

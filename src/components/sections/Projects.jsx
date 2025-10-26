@@ -6,6 +6,12 @@ import { Card } from '../ui/Card'
 import { Badge } from '../ui/Badge'
 import { parseMarkdown } from '../../utils/markdown'
 
+// Import markdown files directly
+import churnPredictionMd from '../../data/projects/customer-churn-prediction.md?raw'
+import defectDetectionMd from '../../data/projects/computer-vision-defect-detection.md?raw'
+import sentimentAnalysisMd from '../../data/projects/nlp-sentiment-analysis.md?raw'
+import predictiveMaintenanceMd from '../../data/projects/predictive-maintenance-lstm.md?raw'
+
 /**
  * Projects section component with grid layout and project cards
  * Loads and displays featured projects from markdown files
@@ -22,10 +28,15 @@ export function Projects() {
 
   const loadProjects = async () => {
     try {
-      // Import all project markdown files (eager import for better compatibility)
-      const projectFiles = import.meta.glob('../../data/projects/*.md', { eager: true, query: '?raw', import: 'default' })
+      // Parse markdown files
+      const projectContents = [
+        churnPredictionMd,
+        defectDetectionMd,
+        sentimentAnalysisMd,
+        predictiveMaintenanceMd,
+      ]
 
-      const allProjects = Object.entries(projectFiles).map(([path, content]) => {
+      const allProjects = projectContents.map((content) => {
         const { frontmatter } = parseMarkdown(content)
         return frontmatter
       })

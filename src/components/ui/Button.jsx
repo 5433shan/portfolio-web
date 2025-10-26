@@ -5,6 +5,7 @@
  */
 export function Button({
   children,
+  as: Component = 'button',
   variant = 'primary',
   size = 'medium',
   type = 'button',
@@ -34,14 +35,14 @@ export function Button({
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`
 
   return (
-    <button
-      type={type}
+    <Component
+      type={Component === 'button' ? type : undefined}
       disabled={disabled}
       onClick={onClick}
       className={combinedClassName}
       {...props}
     >
       {children}
-    </button>
+    </Component>
   )
 }

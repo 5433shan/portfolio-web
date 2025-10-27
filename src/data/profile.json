@@ -21,6 +21,12 @@
       "url": "mailto:sl08095433@gmail.com",
       "icon": "email",
       "label": "Email Address"
+    },
+    {
+      "platform": "medium",
+      "url": "https://medium.com/@sl08095433",
+      "icon": "medium",
+      "label": "Medium Profile"
     }
   ],
   "resumeUrl": "/resume/Pin_Shan_Chuang_Resume.pdf"

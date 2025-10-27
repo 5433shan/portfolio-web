@@ -5,7 +5,7 @@ summary: "Built a machine learning pipeline to predict customer churn with 92% a
 techStack: ["Python", "Scikit-learn", "XGBoost", "Docker", "FastAPI", "SMOTE"]
 repoUrl: "https://github.com/janedoe/churn-prediction"
 demoUrl: "https://churn-demo.example.com"
-featured: true
+featured: false
 order: 1
 date: "2024-08"
 image: "/images/projects/churn-prediction.svg"

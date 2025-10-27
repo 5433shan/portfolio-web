@@ -4,7 +4,7 @@ slug: "computer-vision-defect-detection"
 summary: "Developed a computer vision model for manufacturing defect detection, improving quality control accuracy by 23% and reducing defects by $2.1M annually."
 techStack: ["Python", "TensorFlow", "Keras", "OpenCV", "TensorRT", "ONNX"]
 repoUrl: "https://github.com/janedoe/defect-detection"
-featured: true
+featured: false
 order: 3
 date: "2024-03"
 image: "/images/projects/defect-detection.svg"

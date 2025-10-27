@@ -4,7 +4,7 @@ slug: "portfolio-website"
 summary: "Built a professional portfolio website using SpecKit and Claude Code - no manual coding required. Automated end-to-end workflow from specs to deployed GitHub Pages site."
 techStack: ["SpecKit", "Claude Code", "React", "Vite", "Tailwind CSS", "GitHub Actions"]
 repoUrl: "https://github.com/5433shan/portfolio-web"
-demoUrl: "https://5433shan.github.io/portfolio-web/"
+mediumUrl: "https://medium.com/@sl08095433/using-spec-kit-and-claude-code-to-build-a-github-page-a0f265528840"
 featured: true
 order: 0
 date: "2025-10"

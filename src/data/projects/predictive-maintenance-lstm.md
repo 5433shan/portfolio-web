@@ -4,7 +4,7 @@ slug: "predictive-maintenance-lstm"
 summary: "Built a predictive maintenance system using LSTM networks, reducing unplanned downtime by 18% across 15 production lines and saving $850K annually."
 techStack: ["Python", "TensorFlow", "LSTM", "Keras", "Pandas", "Matplotlib"]
 repoUrl: "https://github.com/janedoe/predictive-maintenance"
-featured: true
+featured: false
 order: 4
 date: "2024-01"
 image: "/images/projects/predictive-maintenance.svg"

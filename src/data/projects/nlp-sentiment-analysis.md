@@ -4,7 +4,7 @@ slug: "nlp-sentiment-analysis"
 summary: "Developed a production-grade NLP pipeline processing 100K+ customer reviews with 91% sentiment accuracy using BERT transformers."
 techStack: ["Python", "PyTorch", "Transformers", "BERT", "FastAPI", "Redis"]
 repoUrl: "https://github.com/janedoe/sentiment-analysis"
-featured: true
+featured: false
 order: 2
 date: "2024-06"
 image: "/images/projects/sentiment-analysis.svg"

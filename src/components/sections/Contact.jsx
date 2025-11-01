@@ -66,31 +66,33 @@ export function Contact() {
 
     try {
       // Submit to Web3Forms (if API key is available)
-      if (import.meta.env.VITE_WEB3FORMS_KEY) {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            from_name: 'Portfolio Contact Form',
-            subject: 'New Contact Form Submission from ' + formData.name,
-          }),
-        })
+      if (!import.meta.env.VITE_WEB3FORMS_KEY) {
+        throw new Error('Email service is not configured. Please contact me directly via email.')
+      }
 
-        if (!response.ok) {
-          throw new Error('Failed to send message')
-        }
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          from_name: 'Portfolio Contact Form',
+          subject: 'New Contact Form Submission from ' + formData.name,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
       }
 
       setSubmitted(true)
       setFormData({ name: '', email: '', message: '', honeypot: '' })
     } catch (err) {
-      setError('Something went wrong. Please try again or email me directly.')
+      setError(err.message || 'Something went wrong. Please try again or email me directly.')
       console.error('Form submission error:', err)
     } finally {
       setSubmitting(false)

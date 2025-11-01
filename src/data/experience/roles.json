@@ -8,7 +8,15 @@
     "location": "Taiwan",
     "achievements": [
       {
-        "description": "Developed data-driven solutions to enhance production efficiency and decision-making, including real-time monitoring dashboards, predictive optimization models, and automation tools that reduced manual work and accelerated development processes.",
+        "description": "Developed and managed a production efficiency monitoring system using Python for OEE estimation, optimizing machine utilization across multiple workstations.",
+        "category": "impact"
+      },
+      {
+        "description": "Built Industry 4.0 solutions with tree-based optimization algorithms and real-time dashboards, accelerating product development by 75%.",
+        "category": "impact"
+      },
+      {
+        "description": "Created interactive visualization and reporting tools with MySQL and PyQt, reducing manual work by 50% and improving operational accuracy.",
         "category": "impact"
       }
     ],
@@ -23,7 +31,15 @@
     "location": "Taiwan",
     "achievements": [
       {
-        "description": "Developed AI-driven systems that enhanced manufacturing efficiency and HR decision-making, improving troubleshooting speed, production output, and talent matching accuracy.",
+        "description": "Developed a cross-country domain-specific chatbot system using LangChain, RAG, LLMs, and Azure AI Services, improving troubleshooting efficiency by 70% and boosting production output (UPPD) by 9%",
+        "category": "impact"
+      },
+      {
+        "description": "Conducted large-scale data ETL and processing using Azure Databricks to process 20B+ data points, improving debugging efficiency by 70% and saving US$1.2M annually",
+        "category": "impact"
+      },
+      {
+        "description": "Built an NLP-based resume recommendation system leveraging machine learning to match candidates with job descriptions and identify top talent.",
         "category": "impact"
       }
     ],

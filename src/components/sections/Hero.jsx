@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { Button } from '../ui/Button'
 import profileData from '../../data/profile.json'
 
 /**
@@ -84,60 +85,81 @@ export function Hero() {
       className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary-50 to-white py-20"
     >
       <motion.div
-        className="container-custom text-center"
+        className="container-custom"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Profile Photo */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <img
-            src={import.meta.env.BASE_URL + profileData.photo.replace(/^\//, '')}
-            alt={profileData.name}
-            className="w-48 h-48 rounded-full mx-auto object-cover shadow-xl ring-4 ring-primary-200"
-            loading="eager"
-          />
-        </motion.div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Photo, Name, Title */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            {/* Profile Photo */}
+            <motion.div variants={itemVariants} className="mb-8">
+              <img
+                src={import.meta.env.BASE_URL + profileData.photo.replace(/^\//, '')}
+                alt={profileData.name}
+                className="w-48 h-48 rounded-full object-cover shadow-xl ring-4 ring-primary-200"
+                loading="eager"
+              />
+            </motion.div>
 
-        {/* Name */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-6xl font-bold text-neutral-900 mb-4"
-        >
-          {profileData.name}
-        </motion.h1>
-
-        {/* Title */}
-        <motion.p
-          variants={itemVariants}
-          className="text-2xl md:text-3xl text-primary-700 font-medium mb-6"
-        >
-          {profileData.title}
-        </motion.p>
-
-        {/* Bio */}
-        <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-xl text-neutral-700 max-w-3xl mx-auto mb-8 leading-relaxed"
-        >
-          {profileData.bio}
-        </motion.p>
-
-        {/* Social Links */}
-        <motion.div variants={itemVariants} className="flex justify-center space-x-6">
-          {profileData.socialLinks.map((link) => (
-            <a
-              key={link.platform}
-              href={link.url}
-              target={link.platform !== 'email' ? '_blank' : undefined}
-              rel={link.platform !== 'email' ? 'noopener noreferrer' : undefined}
-              className="text-neutral-700 hover:text-accent transition-colors duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label={link.label}
+            {/* Name */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-6xl font-bold text-neutral-900 mb-4"
             >
-              {getSocialIcon(link.platform)}
-            </a>
-          ))}
-        </motion.div>
+              {profileData.name}
+            </motion.h1>
+
+            {/* Title */}
+            <motion.p
+              variants={itemVariants}
+              className="text-2xl md:text-3xl text-primary-700 font-medium"
+            >
+              {profileData.title}
+            </motion.p>
+          </div>
+
+          {/* Right Column: Bio, Social Links, Contact Button */}
+          <div className="flex flex-col justify-center">
+            {/* Bio */}
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-neutral-700 mb-8 leading-relaxed"
+            >
+              {profileData.bio}
+            </motion.p>
+
+            {/* Social Links */}
+            <motion.div variants={itemVariants} className="flex justify-center md:justify-start space-x-6 mb-8">
+              {profileData.socialLinks.map((link) => (
+                <a
+                  key={link.platform}
+                  href={link.url}
+                  target={link.platform !== 'email' ? '_blank' : undefined}
+                  rel={link.platform !== 'email' ? 'noopener noreferrer' : undefined}
+                  className="text-neutral-700 hover:text-accent transition-colors duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  aria-label={link.label}
+                >
+                  {getSocialIcon(link.platform)}
+                </a>
+              ))}
+            </motion.div>
+
+            {/* Contact Button */}
+            <motion.div variants={itemVariants}>
+              <Button
+                as="a"
+                href="#contact"
+                variant="primary"
+                size="large"
+                className="inline-block w-full md:w-auto"
+              >
+                Get In Touch
+              </Button>
+            </motion.div>
+          </div>
+        </div>
       </motion.div>
     </section>
   )

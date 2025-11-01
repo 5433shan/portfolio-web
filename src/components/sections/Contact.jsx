@@ -119,7 +119,7 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Let's discuss how I can help with your ML/AI projects
+          Actively seeking new ML/AI opportunities. Let’s connect!
         </motion.p>
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">

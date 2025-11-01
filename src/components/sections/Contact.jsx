@@ -232,7 +232,7 @@ export function Contact() {
                   error={errors.message}
                   required
                   rows={5}
-                  placeholder="Tell me about your project..."
+                  placeholder="..."
                 />
 
                 {error && (
